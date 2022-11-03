@@ -7,10 +7,12 @@
 /config.log
 /config.status
 /configure
+/lib
 /src/.deps
 /src/dlinkcontrol
 /src/*.o
 /stamp-h1
+.deps
 Makefile
 Makefile.in
 *~

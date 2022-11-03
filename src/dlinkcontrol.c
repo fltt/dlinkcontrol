@@ -26,29 +26,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#ifdef HAVE_STRINGS_H
 #include <strings.h>
-#endif
 
 #ifdef HAVE_SYSLOG_H
 #include <syslog.h>
 #endif
 
 #include <time.h>
-
-#ifdef HAVE_UNISTD_H
 #include <unistd.h>
-#endif
 
 #ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
 #endif
 
-#ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
-#endif
-
 #include <sys/types.h>
 
 #ifdef USE_LIBCURL
@@ -60,6 +51,7 @@
 #endif
 
 #include "cJSON.h"
+
 
 #define USAGE(name)                                                     \
     "Usage: %s [-qs] [-h host] iccid\n"                                 \

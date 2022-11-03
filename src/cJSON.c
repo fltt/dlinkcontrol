@@ -20,6 +20,8 @@
   THE SOFTWARE.
 */
 
+#include <config.h>
+
 /* cJSON */
 /* JSON parser in C. */
 
