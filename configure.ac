@@ -28,4 +28,5 @@ AC_CONFIG_HEADERS([config.h])
 AC_OUTPUT
 AS_IF([test "x$ac_cv_header_libutil_h" != xyes],
       AC_MSG_WARN([libutil found but no corresponding header file found -- trying to compile nevertheless]))
-dnl ??? warn for syslog.h
+AS_IF([test "x$ac_cv_header_syslog_h" != xyes],
+      AC_MSG_WARN([syslog.h not found -- logging to syslog won't be available]))

@@ -741,6 +741,7 @@ error_print(struct state *state)
             fprintf(stderr, msg, state->error.value);
         }
     }
+#ifdef HAVE_SYSLOG_H
     if (state->mode & LOG_MODE_SYSLOG) {
         switch (type) {
         case 0:
@@ -770,6 +771,7 @@ error_print(struct state *state)
         default: /* 3 */
             syslog(level | SYSLOG_FACILITY, msg, state->error.value);
         }
+#endif
     }
 }
 
@@ -807,11 +809,13 @@ log_print(struct state *state, int level, const char *message, ...)
         vfprintf(stderr, message, margs);
         va_end(margs);
     }
+#ifdef HAVE_SYSLOG_H
     if (state->mode & LOG_MODE_SYSLOG) {
         va_start(margs, message);
         vsyslog(level | SYSLOG_FACILITY, message, margs);
         va_end(margs);
     }
+#endif
 }
 
 #ifdef USE_LIBCURL
