@@ -105,14 +105,15 @@
 #define QCMAP_SCHEME "http"
 #define QCMAP_PORT "80"
 
-#define HTTP_TIMEOUT 30000L /* ms */
+#define HTTP_CONNECT_TIMEOUT 10000L /* ms */
+#define HTTP_TRANSFER_TIMEOUT 30000L /* ms */
 #endif
 
 #ifdef USE_FETCH
 #define QCMAP_SCHEME SCHEME_HTTP
 #define QCMAP_PORT 80
 
-#define HTTP_TIMEOUT 30 /* seconds */
+#define HTTP_TRANSFER_TIMEOUT 30 /* seconds */
 #endif
 
 #define QCMAP_DEFAULT_HOST "192.168.0.1"
@@ -887,9 +888,11 @@ qcmap_post(struct state *state, const char *request, int length)
         if (result == CURLE_OK)
             result = curl_easy_setopt(state->handle, CURLOPT_POST, 1L);
         if (result == CURLE_OK)
-            /* ??? CURLOPT_CONNECTTIMEOUT_MS */
+            result = curl_easy_setopt(state->handle, CURLOPT_CONNECTTIMEOUT_MS,
+                                      HTTP_CONNECT_TIMEOUT);
+        if (result == CURLE_OK)
             result = curl_easy_setopt(state->handle, CURLOPT_TIMEOUT_MS,
-                                      HTTP_TIMEOUT);
+                                      HTTP_TRANSFER_TIMEOUT);
         if (result != CURLE_OK) {
             error_set_result(state, ERROR_CODE_LIBCURL, result);
             return NULL;
@@ -2218,7 +2221,7 @@ main(int argc, char *argv[])
         return EXIT_CODE_SUCCESS;
     }
 #ifdef USE_FETCH
-    fetchTimeout = HTTP_TIMEOUT;
+    fetchTimeout = HTTP_TRANSFER_TIMEOUT;
 #endif
     cmd = argv[0];
     error_init(&state);
