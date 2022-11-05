@@ -1,5 +1,23 @@
 /*
- * Copyright (c) 2022, Francesco Lattanzio
+ * Copyright 2022 Francesco Lattanzio
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 #include <config.h>
@@ -53,20 +71,22 @@
 #include "cJSON.h"
 
 
-#define USAGE(name)                                                     \
-    "Usage: %s [-qs] [-h host] iccid\n"                                 \
-    "       %s [-qs] [-h host] unlock <pin>\n"                          \
-    "       %s [-qs] [-h host] reset_pin <new_pin> <puk> [NOT TESTED!]\n" \
-    "       %s [-qls] [-c cap] [-h host] connect <pid_file> <account_file>\n" \
-    "       %s [-qs] [-h host] dns\n"                                   \
-    "       %s [-qs] [-h host] disconnect <pid_file>\n"                 \
-    "       %s [-qs] [-h host] sms list <storage> <box>\n"              \
-    "       %s [-qs] [-h host] sms store <storage> <msisdn> <text>\n"   \
-    "       %s [-qs] [-h host] sms delete <storage> <box> <index>\n"    \
+#define USAGE                                                           \
+    PACKAGE_STRING "\n"                                                 \
+    "\n"                                                                \
+    "Usage: " PACKAGE_TARNAME " [-qs] [-h host] iccid\n"                \
+    "       " PACKAGE_TARNAME " [-qs] [-h host] unlock <pin>\n"         \
+    "       " PACKAGE_TARNAME " [-qs] [-h host] reset_pin <new_pin> <puk> [NOT TESTED!]\n" \
+    "       " PACKAGE_TARNAME " [-qls] [-c cap] [-h host] connect <pid_file> <account_file>\n" \
+    "       " PACKAGE_TARNAME " [-qs] [-h host] dns\n"                  \
+    "       " PACKAGE_TARNAME " [-qs] [-h host] disconnect <pid_file>\n" \
+    "       " PACKAGE_TARNAME " [-qs] [-h host] sms list <storage> <box>\n" \
+    "       " PACKAGE_TARNAME " [-qs] [-h host] sms store <storage> <msisdn> <text>\n" \
+    "       " PACKAGE_TARNAME " [-qs] [-h host] sms delete <storage> <box> <index>\n" \
     "    -c cap       - instead of logging the number of received and transmitted\n" \
     "                   bytes so far, logs the number of \"available\" bytes, i.e.,\n" \
     "                   the difference between the specified value and the sum of\n" \
-    "                   so-far received and transmitted bytes\n"     \
+    "                   so-far received and transmitted bytes\n"        \
     "    -h host      - D-Link web server hostname (default 192.168.0.1)\n" \
     "    -l           - drop the connection as soon as the number of \"available\"\n" \
     "                   bytes reach zero\n"                             \
@@ -96,8 +116,10 @@
     "    5 - PIN locked SIM\n"                                          \
     "    6 - PUK locked SIM\n"                                          \
     "    7 - unexpected disconnection\n"                                \
-    "    8 - unexpectedly connected\n",                                 \
-        (name), (name), (name), (name), (name), (name), (name), (name), (name)
+    "    8 - unexpectedly connected\n"                                  \
+    "\n"                                                                \
+    "Report bugs to " PACKAGE_BUGREPORT "\n"                            \
+    "            or " PACKAGE_URL "\n"
 
 #ifdef USE_LIBCURL
 #define REQUIRED_LIBCURL_VERSION 0x071100 /* 7.17.0 */
@@ -2221,7 +2243,7 @@ main(int argc, char *argv[])
     argc -= optind;
     argv = &argv[optind];
     if (argc < 1) {
-        fprintf(stdout, USAGE(state.name));
+        fprintf(stdout, USAGE);
         return EXIT_CODE_SUCCESS;
     }
 #ifdef USE_FETCH
@@ -2323,6 +2345,6 @@ error2:
     fprintf(stderr, "%s: not enough arguments\n\n", state.name);
 
 error1:
-    fprintf(stderr, USAGE(state.name));
+    fprintf(stderr, USAGE);
     return EXIT_CODE_INVALID_ARGUMENT;
 }
