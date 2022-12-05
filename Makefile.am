@@ -1,4 +1,4 @@
-# Copyright 2022 Francesco Lattanzio
+# Copyright (c) 2022 Francesco Lattanzio
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-EXTRA_DIST = m4/gnulib-cache.m4
-
 SUBDIRS = lib src
+
+EXTRA_DIST = m4/gnulib-cache.m4
+dist_doc_DATA = README.md

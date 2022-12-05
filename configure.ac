@@ -1,4 +1,4 @@
-# Copyright 2022 Francesco Lattanzio
+# Copyright (c) 2022 Francesco Lattanzio
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 AC_PREREQ([2.71])
-AC_INIT([D-Link Control], [1.0.0], [franz.lattanzio@gmail.com],
+AC_INIT([D-Link Control], [1.0.1], [franz.lattanzio@gmail.com],
         [dlinkcontrol], [https://github.com/fltt/dlinkcontrol])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_AUX_DIR([build-aux])
