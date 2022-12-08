@@ -7,6 +7,9 @@ It works by sending HTTP command to the DWM-222's embedded WEB Server.
 > **NOTE:** This tool was developed and tested on the *FreeBSD* OS and
 > the instruction provided here are meant for the *FreeBSD* OS.
 > On other Operating Systems, this tool may even fail to compile.
+>
+> A *FreeBSD* port is available at the sibling [dlinkcontrol-port][]
+> repository.
 
 Features
 --------
@@ -153,3 +156,6 @@ you'll need to:
 > **WARNING:** Firmware upgrade is always a risky process, especially if
 > done from a Virtual Machine.
 > Don't blame me if you brick your brand new DWM-222!
+
+
+[dlinkcontrol-port]: https://github.com/fltt/dlinkcontrol-port
