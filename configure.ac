@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Francesco Lattanzio
+# Copyright (c) 2022, 2023 Francesco Lattanzio
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 AC_PREREQ([2.71])
-AC_INIT([D-Link Control], [1.0.1], [franz.lattanzio@gmail.com],
+AC_INIT([D-Link Control], [1.0.2], [franz.lattanzio@gmail.com],
         [dlinkcontrol], [https://github.com/fltt/dlinkcontrol])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -27,8 +27,8 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 gl_EARLY
-AC_CHECK_LIB([util], [pidfile_open], [],
-             [AC_MSG_ERROR([libutil is required])])
+AC_SEARCH_LIBS([pidfile_open], [bsd util], [],
+               [AC_MSG_ERROR([could not find pidfile_open function])])
 LIBCURL_CHECK_CONFIG([yes], [7.17.0],
                      [AS_IF([test "x$libcurl_protocol_HTTP" = xyes],
                             [AC_DEFINE([HAVE_WORKING_LIBCURL], [1],

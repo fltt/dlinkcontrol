@@ -47,3 +47,8 @@
 /wchar_h.m4
 /wint_t.m4
 /zzgnulib.m4
+/codeset.m4
+/gettimeofday.m4
+/locale-fr.m4
+/musl.m4
+/time.m4
