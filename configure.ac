@@ -39,14 +39,14 @@ AS_IF([test "x$working_libcurl_found" != xyes],
       [AC_CHECK_LIB([fetch], [fetchReqHTTP], [],
                     [AC_MSG_ERROR([libcurl nor libfetch could be found])])])
 AM_CONDITIONAL([LINK_TO_LIBCURL], [test "x$working_libcurl_found" = xyes])
-AC_CHECK_HEADERS([libutil.h syslog.h sys/param.h])
+AC_CHECK_HEADERS([bsd/libutil.h libutil.h syslog.h sys/param.h])
 gl_INIT
 AC_CONFIG_FILES([Makefile
                  lib/Makefile
                  src/Makefile])
 AC_CONFIG_HEADERS([config.h])
 AC_OUTPUT
-AS_IF([test "x$ac_cv_header_libutil_h" != xyes],
-      AC_MSG_WARN([libutil found but no corresponding header file found -- trying to compile nevertheless]))
+AS_IF([test "x$ac_cv_header_bsd_libutil_h" != xyes && test "x$ac_cv_header_libutil_h" != xyes],
+      AC_MSG_WARN([libbsd or libutil found but no corresponding header file found -- trying to compile nevertheless]))
 AS_IF([test "x$ac_cv_header_syslog_h" != xyes],
       AC_MSG_WARN([syslog.h not found -- logging to syslog won't be available]))

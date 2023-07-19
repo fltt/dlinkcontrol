@@ -36,6 +36,8 @@
 
 #ifdef HAVE_LIBUTIL_H
 #include <libutil.h>
+#elif defined(HAVE_BSD_LIBUTIL_H)
+#include <bsd/libutil.h>
 #endif
 
 #include <limits.h>
