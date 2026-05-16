@@ -131,15 +131,15 @@ Configuration must be done through the WEB interface, for the
 
 Firmware Upgrade
 ----------------
-As of now (november 2022) there are two firmware revisions available for
-the DWM-222 device: A1 and A2.
+As of now (november 2022) there are two firmware versions available for
+the DWM-222 device (hardware revision A2): 2.0.1 and 2.0.2.
 
-Revision A1 does not work with *FreeBSD* (tested on release 13.1), that
-is, it gives you no CD-ROM unit, so there is no means to activate the
-RNDIS / CDC-ECM protocol interface.
+Version 2.0.1 does not work with *FreeBSD* (tested on release 13.1),
+that is, it gives you no CD-ROM unit, so there is no means to activate
+the RNDIS / CDC-ECM protocol interface.
 
-You can download revision A2 from D-Link's product support web page, but
-you'll need Windows to run the upgrade utility.
+You can download version 2.0.2 from D-Link's product support web page,
+but you'll need Windows to run the upgrade utility.
 It is possible to run it from *VirtualBox* (as I did, from *Linux*),
 you'll need to:
 
@@ -151,7 +151,7 @@ you'll need to:
    bar to select the DWM-222 device
 4. run the upgrade utility and follow the instructions
 5. keep selecting all the USB vendor id / product id the DWM-222 will
-   cicle through during the upgrade process
+   cycle through during the upgrade process
 
 > **WARNING:** Firmware upgrade is always a risky process, especially if
 > done from a Virtual Machine.
